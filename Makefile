@@ -8,7 +8,8 @@ NASM = nasm
 
 NASMFLAGS = -f elf64
 
-SRCS = ft_tolower.s ft_toupper.s ft_bzero.s
+SRCS = ft_tolower.s ft_toupper.s ft_bzero.s ft_strcat.s ft_isdigit.s \
+	   ft_isalpha.s
 
 SRC = $(addprefix src/, $(SRCS))
 OBJ = $(SRC:src/%.s=%.o)
