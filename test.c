@@ -38,5 +38,7 @@ int		main(void)
 		printf("all are num or al\n");
 	printf("ft_strlen: %zu\n", ft_strlen(c));
 	ft_puts(c);
+	c = ft_memset(c, ']', 4);
+	printf("c is %s after memset\n", c);
 	return (0);
 }
