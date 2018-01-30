@@ -23,6 +23,20 @@ int		main(void)
 		printf("isalpha\n");
 	if (!ft_isalpha(c[3]))
 		printf("isnotalpha\n");
-	printf("%s\n", c);
+	if (!ft_isprint(c[9]))
+		printf("not printable\n");
+	if (ft_isprint(c[2]))
+		printf("isprintable\n");
+	if (!ft_isascii(-12) && !ft_isascii(130))
+		printf("Not ascii\n");
+	if (ft_isascii(48))
+		printf("Is ascii\n");
+	if (!ft_isalnum(')') && !ft_isalnum(';') && !ft_isalnum(']')
+			&& !ft_isalnum('~'))
+		printf("not al or num\n");
+	if (ft_isalnum('7') && ft_isalnum('c') && ft_isalnum('H'))
+		printf("all are num or al\n");
+	printf("ft_strlen: %zu\n", ft_strlen(c));
+	ft_puts(c);
 	return (0);
 }
