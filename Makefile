@@ -1,22 +1,39 @@
 NAME = libfts.a
-SRC = src/ft_tolower.s
-OBJECTS = src/ft_tolower.o
-CC = nasm -f elf64
-RM = rm -rf
+TEST = test
+CC = gcc
+INC = -I include
+LIB = -L . -lfts
+CFLAGS = -Wall -Werror -Wextra
+NASM = nasm
+
+NASMFLAGS = -f elf64
+
+SRCS = ft_tolower.s ft_toupper.s ft_bzero.s
+
+SRC = $(addprefix src/, $(SRCS))
+OBJ = $(SRC:src/%.s=%.o)
+O_DIRS = $(SRC:src/%.s=src/%.o)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(SRC) -o $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)
+$(NAME): $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	mv $(OBJ) src
 	ranlib $(NAME)
 
-clean:
-	$(RM) $(OBJECTS)
+%.o: src/%.s
+	$(NASM) $(NASMFLAGS) $< -o $@
 
-fclean : clean
+clean:
+	$(RM) $(O_DIRS)
+
+fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(TEST)
+
+test:
+	$(CC) test.c $(CFLAGS) $(INC) -L. -lfts -o $(TEST)
 
 re: fclean all
 
-.PHONY: all re fclean clean
+.PHONY: re all clean fclean

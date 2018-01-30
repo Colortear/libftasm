@@ -1,6 +1,5 @@
 section .text
 	global ft_tolower
-	global return_lower
 
 ft_tolower:
 				mov		rax, rdi
