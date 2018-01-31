@@ -6,6 +6,8 @@ int		main(void)
 {
 	char	*c;
 	char	d[7] = "123456\0";
+	char	e[15];
+	char	*ptr;
 
 	c = (char *)malloc(sizeof(char) * 15);
 	ft_bzero(c, 15);
@@ -40,5 +42,11 @@ int		main(void)
 	ft_puts(c);
 	c = ft_memset(c, ']', 4);
 	printf("c is %s after memset\n", c);
+	ptr = ft_memcpy(e, c, 9);
+	printf("memcpy e: %s\nmemcpy return: %s\n", e, ptr);
+	printf("c is still: %s\n", c);
+	free(c);
+	c = ft_strdup("HERRO FREIND");
+	ft_puts(c);
 	return (0);
 }
