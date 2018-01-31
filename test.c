@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "include/libfts.h"
 
 int		main(void)
 {
+	int		fd;
 	char	*c;
 	char	d[7] = "123456\0";
 	char	e[15];
@@ -48,5 +51,8 @@ int		main(void)
 	free(c);
 	c = ft_strdup("HERRO FREIND");
 	ft_puts(c);
+	fd = open("Makefile", O_RDONLY);
+	ft_cat(fd);
+	close(fd);
 	return (0);
 }
